@@ -28,7 +28,7 @@ class About extends React.Component{
       <div className="about-col">
         <h1>We are the World Largest University</h1>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores molestias obcaecati veniam alias pariatur sapiente accusamus perferendis voluptates? Laborum vitae quos eligendi, ut dolores delectus odio magni molestias quasi facilis.</p>
-        <a href className="hero-btn red-btn">Explore Now</a>
+        <a href="" className="hero-btn red-btn">Explore Now</a>
       </div>
       <div className="about-col">
         <img src="images/about.jpg" alt="" />

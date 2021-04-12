@@ -53,7 +53,7 @@ class Contact extends React.Component{
         </div>
       </div>
       <div className="contact-col">
-        <form action="form-handler.php" method="POST">
+        <form>
           <input type="text" name="name" placeholder="Enter Your Name" required />
           <input type="email" name="email" placeholder="Enter Your Email" required />
           <input type="text" name="subject" placeholder="Enter Your Subject" required />

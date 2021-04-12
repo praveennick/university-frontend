@@ -35,7 +35,7 @@ class Blog extends React.Component{
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi veritatis neque numquam. Sint inventore corporis tempora excepturi tempore sequi possimus ipsam deserunt repellendus quas alias nisi porro, quos ex. Quaerat.</p>
         <div className="comment-box">
           <h3>Leave a Comment</h3>
-          <form action className="comment-form">
+          <form className="comment-form">
             <input type="text" placeholder="Enter Name" />
             <input type="email" placeholder="Enter Email" />
             <textarea rows={5} placeholder="Your Comment" defaultValue={""} />
