@@ -21,7 +21,6 @@ class Home extends React.Component{
       
         return (
             <div>
-            {this.logoutUser}
   <section className="header">
     <nav>
       <NavLink to="/"><img src="images/logo.png" alt="" /></NavLink>
@@ -33,7 +32,7 @@ class Home extends React.Component{
           <li><NavLink to="/course">Course</NavLink></li>
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/contact">contact</NavLink></li>
-          {this.props.isUserLoggedIn?<li><NavLink onClick={this.logout} to="/">Logout</NavLink></li>:<li><NavLink to="/login">login</NavLink></li>}
+          {this.props.isUserLoggedIn?<li><span className="logout" onClick={this.logout} >Logout</span></li>:<li><NavLink to="/login">login</NavLink></li>}
          
           {console.log("is userLogedin in home:",this.props.isUserLoggedIn)}
         </ul>
