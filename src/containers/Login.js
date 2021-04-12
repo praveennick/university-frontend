@@ -26,7 +26,8 @@ class Login extends React.Component{
     event.preventDefault();
     console.log("state",this.state);
     this.props.loginUser(this.state);
-    alert("Login success")
+    // alert("Login success");
+    // this.props.history.push('/');
   }
     render() {
       console.log("In login","userLogged:"+this.props.isUserLoggedIn);
