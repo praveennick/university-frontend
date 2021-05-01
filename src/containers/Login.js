@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/userAction'
+import TextField from '@material-ui/core/TextField'
 
 class Login extends React.Component{
   constructor(){
@@ -26,6 +27,7 @@ class Login extends React.Component{
     event.preventDefault();
     console.log("state",this.state);
     this.props.loginUser(this.state);
+    sessionStorage.setItem("name",this.state.s_name)
     // alert("Login success");
     // this.props.history.push('/');
   }
@@ -56,10 +58,14 @@ class Login extends React.Component{
   {/* -----------About Us Content=================== */}
   <section className="login">
   <form>
+    {/* <TextField
+      id=""
+      label="Enter Name"
+    /> */}
   <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email-address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="s_email" onChange={this.inputChanged} />
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
+    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="s_name" onChange={this.inputChanged} />
+    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
@@ -69,9 +75,15 @@ class Login extends React.Component{
     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
     <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
   </div>
-  <button className="btn btn-primary center-block" onClick={this.login}>Login!</button>
+  <button className="btn  btn-primary center-block" onClick={this.login}>Login!</button>
+  <div className="mt-4 ">
+    Don't have an account? {" "}
+    <NavLink className="" to="/register">
+      Create One
+    </NavLink>
+  </div>
 </form>
-
+{/* style={{marginRight:"auto",marginLeft:"auto"}} */}
   </section>
             </div>
         )
