@@ -13,7 +13,7 @@ class Footer extends React.Component{
       <i className="fa fa-instagram" />
       <i className="fa fa-linkedin" />
     </div>
-    <p>Made With <i className="fa fa-heart-o" /> by Upsteer</p>
+    <p>Made With <i className="fa fa-heart-o" /> by Praveen</p>
   </section>
             </div>
         )
