@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import {logoutUser} from '../actions/userAction';
+import {logoutUser,displayUser} from '../actions/userAction';
+import { connect } from 'react-redux';
 
 
 class Home extends React.Component{
@@ -16,11 +16,27 @@ class Home extends React.Component{
     logout(event){
       event.preventDefault();
       this.props.logoutUser();
+      sessionStorage.removeItem("name");
     }
+
+    componentDidMount(){
+      // console.log("this is props",this.props.isProductIdPassed)
+      var productId=sessionStorage.getItem("name");
+      console.log("here is ths pid",productId)
+      if(this.props.isUserLoggedIn){
+        this.props.displayUser(productId)
+      }
+     else{
+       console.log("please login")
+     }
+  }
+
     render() {
       
+      var sid=JSON.parse(sessionStorage.getItem("id"));
         return (
             <div>
+              
   <section className="header">
     <nav>
       <NavLink to="/"><img src="images/logo.png" alt="" /></NavLink>
@@ -32,11 +48,23 @@ class Home extends React.Component{
           <li><NavLink to="/course">Course</NavLink></li>
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/contact">contact</NavLink></li>
-          {this.props.isUserLoggedIn?<li><span className="logout" onClick={this.logout} >Logout</span></li>:<li><NavLink to="/login">login</NavLink></li>}
-         
+          {/* {this.props.isUserLoggedIn?this.props.displayUser:console.log("no user")}; */}
+          {this.props.isUserLoggedIn?
+          <li className="nav-item dropdown" style={{padding:"0px"}}>
+		        <a className="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" style={{padding:"0px"}}> {this.props.isUserLoggedIn.s_name}  </a>
+		        <ul className="dropdown-menu" style={{color:"black",textAlign:"center",padding:"0px"}}>
+			      <li><NavLink className="dropdown-item" to="/my-profile" style={{color:"black",padding:"0px 0px",textAlign:"justify"}}> <i className="fa fa-user-o" aria-hidden="true"/>
+My Profile</NavLink></li>
+			      <li><a className="dropdown-item" onClick={this.logout} href="#" style={{color:"black",padding:"0px"}}> Logout </a></li>
+		        </ul>
+		      </li>:<li><NavLink to="/login">login</NavLink></li>}
+          
+
+
           {console.log("is userLogedin in home:",this.props.isUserLoggedIn)}
         </ul>
       </div>
+      
       <i className="fa fa-bars" onClick={()=>{ var navLinks = document.getElementById("navLinks");navLinks.style.right = "0";}} />
     </nav>
     <div className="text-box">
@@ -161,7 +189,8 @@ function mapStateToProps(appState){
 function mapDispatchToProps(dispatch){
   return bindActionCreators(
     {
-      logoutUser:logoutUser
+      logoutUser:logoutUser,
+      displayUser:displayUser
     },dispatch
   )
 }
