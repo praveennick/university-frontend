@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const URL = "https://university-backend.herokuapp.com/"
+
 export function loginUser(user){
     console.log("user",user);
-    var promise = axios.post("http://localhost:9545/login",user)
+    var promise = axios.post(`${URL}login`,user)
     console.log("promise",promise)
     return{
         type:"LOGIN",
@@ -12,7 +14,7 @@ export function loginUser(user){
 export function registerNewUser(user) {
     alert("Im in register action");
     console.log("user", user);
-    var promise = axios.post("http://localhost:9545/register", user);
+    var promise = axios.post(`${URL}register`, user);
     console.log("register-promise",promise)
     return {
       type: "REGISTER",
@@ -25,7 +27,7 @@ export function updateUser(user) {
     console.log("user", user);
     var username=sessionStorage.getItem("name");
       console.log("here is ths pid",username)
-    var promise = axios.put("http://localhost:9545/updateUser/"+username, user);
+    var promise = axios.put(`${URL}updateUser/`+username, user);
     console.log("update-promise",promise);
     if(user.s_name){
         console.log("printed");
@@ -40,7 +42,7 @@ export function updateUser(user) {
 export function displayUser(sid){
     console.log("display action called")
     // var sid=JSON.parse(localStorage.getItem("id"))
-    var promise = axios.get("http://localhost:9545/getUserById/"+sid);
+    var promise = axios.get(`${URL}getUserById/`+sid);
     console.log("promise",promise);
     return{
         type:"DISPLAY_USER",
