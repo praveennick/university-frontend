@@ -9,6 +9,8 @@ import About from './containers/About';
 import Course from './containers/Course';
 import Footer from './containers/Footer';
 import Login from './containers/Login';
+import MyProfile from './containers/MyProfile';
+import Register from './containers/Register';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/about" component={About}/>
           <Route path="/course" component={Course}/>
           <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
+          <Route path="/my-profile" component={MyProfile}/>
           <Footer/>
 
         </Router>
