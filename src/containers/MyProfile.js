@@ -65,7 +65,7 @@ class MyProfile extends React.Component{
           {this.props.isUserLoggedIn?
           <li className="nav-item dropdown" style={{padding:"0px"}}>
 		        <a className="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" style={{padding:"0px"}}><PersonIcon/> {this.props.isUserLoggedIn.s_name}  </a>
-		        <ul className="dropdown-menu" style={{color:"black",textAlign:"center",padding:"0px"}}>
+		        <ul className="dropdown-menu" style={{color:"black",textAlign:"center",padding:"0px",outline:"none"}}>
 			      <li><NavLink className="dropdown-item" to="/my-profile" style={{color:"black",padding:"0px 0px",textAlign:"justify"}}> <AccountCircle style={{marginRight:"10px"}}/>
             My Profile</NavLink></li>
 			      <li><a className="dropdown-item" onClick={this.logout} href="#" style={{color:"black",padding:"0px"}}> <ExitToApp style={{marginRight:"20px"}}/> Logout </a></li>

@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 export default function(state=null,action){
     switch(action.type){
         case 'REGISTER':
@@ -5,7 +7,12 @@ export default function(state=null,action){
             
             if(action.payload.data.result){
                 console.log("reducer printed");
-                alert("User Created Successfully!")
+                Swal.fire(
+                    // 'User Created Successfully!',
+                    'Good job!',
+                    'User Created Successfully!',
+                    'success'
+                  )
                 return false;
             }
         case "LOGIN":

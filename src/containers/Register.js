@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {registerNewUser} from '../actions/userAction'
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
+import Swal from 'sweetalert2';
 
 class Register extends React.Component{
   constructor(){
@@ -37,6 +38,7 @@ class Register extends React.Component{
     this.props.registerNewUser(this.state);
     console.log("props", this.props.registerNewUser);
     console.log("register props", this.props);
+    
     this.props.history.push('/login');
 }
     render() {

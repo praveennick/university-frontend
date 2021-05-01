@@ -12,7 +12,7 @@ export function loginUser(user){
     }
 }
 export function registerNewUser(user) {
-    alert("Im in register action");
+    // alert("Im in register action");
     console.log("user", user);
     var promise = axios.post(`${URL}register`, user);
     console.log("register-promise",promise)
