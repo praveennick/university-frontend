@@ -1,7 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import {logoutUser} from '../actions/userAction';
+import { connect } from 'react-redux';
 
 class Course extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      
+    }
+    this.logout=this.logout.bind(this)
+  }
+  logout(event){
+    event.preventDefault();
+    this.props.logoutUser();
+    sessionStorage.removeItem("name");
+    this.props.history.push('/');
+  }
     render() {
         return (
             <div>
@@ -17,6 +33,15 @@ class Course extends React.Component{
           <li><NavLink to="/course">Course</NavLink></li>
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/contact">contact</NavLink></li>
+          {this.props.isUserLoggedIn?<li className="nav-item dropdown">
+          
+          <a className="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown" style={{padding:"0px"}}> {this.props.isUserLoggedIn.s_name}  </a>
+          <ul className="dropdown-menu" style={{color:"black",textAlign:"center",padding:"0px"}}>
+          
+          <li><NavLink className="dropdown-item" to="/my-profile" style={{color:"black",padding:"0px"}}> My Profile</NavLink></li>
+          <li><a className="dropdown-item" onClick={this.logout} href="#" style={{color:"black",padding:"0px"}}> Logout </a></li>
+          </ul>
+        </li>:<li><NavLink to="/login">login</NavLink></li>}
         </ul>
       </div>
       <i className="fa fa-bars" onClick={()=>{ var navLinks = document.getElementById("navLinks");navLinks.style.right = "0";}} />
@@ -70,4 +95,18 @@ class Course extends React.Component{
     }
 }
 
-export default Course;
+function mapStateToProps(appState){
+  return{
+    isUserLoggedIn:appState.isUserLoggedIn
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(
+    {
+      logoutUser:logoutUser
+    },dispatch
+  )
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Course);
